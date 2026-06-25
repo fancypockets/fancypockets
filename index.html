@@ -10,19 +10,21 @@
             background-color: #121212;
             color: #e0e0e0;
             margin: 0;
-            padding: 40px;
+            padding: 40px 20px; /* Уменьшили боковые отступы для мобильных */
             display: flex;
             justify-content: center;
         }
         .epk-container {
             background: linear-gradient(135deg, #1e1e1e 0%, #151515 100%);
-            width: 800px;
+            width: 100%; /* Занимает всю ширину на мобильных */
+            max-width: 800px; /* Но не расширяется больше 800px на ПК */
             border-radius: 16px;
-            padding: 50px;
+            padding: 50px 30px; /* Немного адаптировали внутренние отступы */
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             border: 1px solid #2a2a2a;
             position: relative;
             overflow: hidden;
+            box-sizing: border-box; /* Чтобы паддинги не взрывали ширину */
         }
         .epk-container::before {
             content: '';
@@ -56,9 +58,11 @@
         .meta-info {
             font-size: 14px;
             color: #a0a0a0;
+            line-height: 1.6; /* Добавили отступ между строками для мобильных */
         }
         .meta-info span {
             margin-right: 20px;
+            display: inline-block; /* Чтобы инфо-блоки красиво переносились */
         }
         .meta-info a {
             color: #4ecdc4;
@@ -112,11 +116,33 @@
             display: flex;
             justify-content: space-between;
             font-size: 14px;
+            gap: 15px;
         }
         .footer-contacts a {
             color: #ff6b6b;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        /* --- АДАПТИВ ОСОБЕННО ДЛЯ ТЕЛЕФОНОВ --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Минимальные отступы от краев экрана смартфона */
+            }
+            .epk-container {
+                padding: 30px 20px; /* Уменьшаем внутренние падинги на мобилке */
+            }
+            h1 {
+                font-size: 32px; /* Чуть уменьшаем заголовок, чтобы не ломался */
+            }
+            .grid-2 {
+                grid-template-columns: 1fr; /* Бесетка из двух колонок превращается в одну вертикальную */
+                gap: 10px;
+            }
+            .footer-contacts {
+                flex-direction: column; /* Контакты в подвале встают друг под друга */
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -136,8 +162,9 @@
     <div class="highlight-box">
         „Klassiker neu gedacht: Die größten Pop- und Rockhits von AC/DC bis Alicia Keys im unverwechselbaren, tighten und tanzbaren Funk-Gewand – eine energiegeladene Live-Hommage an das legendäre YouTube-Phänomen Scary Pockets.“
     </div>
-<h3>Biografie</h3>
-    <p>Gegründet in Bruchsal, bringt die <strong>Fancy Pockets Band</strong> den typischen kalifornischen Session-Vibe direkt auf die europäischen Bühnen. Inspiriert vom weltbekannten Musikkollektiv <em>Scary Pockets</em>, interpretieren die fünf Musiker altbekannte Welthits völlig neu. Ihr Sound zeichnet sich durch eine minimalistische, aber unaufhaltsam groovende Rhythmusgruppe, messerscharfe Gitarrenriffs, soulige Keyboards und eine mitreißende Gesangsperformance aus. Absolut „pocket-tight“!</p>
+
+    <h3>Biografie</h3>
+    <p>Gegründet in Bruchsal, bringt die <strong>Fancy Pockets Band</strong> den typischen kalifornischen Session-Vibe direkt auf die europäischen Bühnen. Inspiriert vom weltbekannten Musikkollektiv <em>Scary Pockets</em>, interpretieren die @Musiker altbekannte Welthits völlig neu. Ihr Sound zeichnet sich durch eine minimalistische, aber unaufhaltsam groovende Rhythmusgruppe, messerscharfe Gitarrenriffs, soulige Keyboards und eine mitreißende Gesangsperformance aus. Absolut „pocket-tight“!</p>
 
     <div class="grid-2">
         <div>
@@ -171,3 +198,4 @@
 
 </body>
 </html>
+
